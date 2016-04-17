@@ -87,6 +87,7 @@ h6 {
     float: right;
     width: 40%;
     height: auto;
+    max-height: 600px;
 }
 .main-section h2 {
     color: red;
@@ -94,13 +95,21 @@ h6 {
 }
 .main-section p {
     color: red;
+    max-height: 480px;
 }
 
-.sidebar {
+.game-section {
     float: left;
     width: 60%;
     height: auto;
-    border: 5px dashed #646464;
+    max-height: 550px;
+}
+
+.mystery-word {
+    float: left;
+    clear: both;
+    width: 100%;
+    text-align: center;
 }
 
     /*Footer*/
