@@ -8,7 +8,7 @@ var mysteryWord = [];
 mysteryWord.length = wordChoice.length;
 
 window.onload = function () {
-	document.getElementById("#mystery-word").innerHTML=wordChoice;
+	document.querySelector("#mystery-word").innerHTML=wordChoice;
 }
 var guessedLetters = [];
 
