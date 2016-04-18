@@ -5,7 +5,6 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<link href='https://fonts.googleapis.com/css?family=Simonetta:400,900' rel='stylesheet' type='text/css'>
-	<script type="text/javascript" href="/assests/javascript/game.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -22,12 +21,12 @@
 					<p>&emsp;Simply press the letter on your keyboard that you think is in the mystery word.  A correct guess will show up in the mystery word.  A wrong guess will begin "the hanging."  Get all the correct letters and you will recieve a reward.  If you run out of guesses, you'll only get "The Hanged Man".
 					<br>&emsp;Good Luck!
 				</section>
-				<section class="game-section">
+				<div id="game-section">
 					<!-- hanging man and reward goes here -->
-				</section>
-				<section class="mystery-word">
-					<!-- mystery word goes here -->
-				</section>
+				</div>
+				<div id="mystery-word">
+					<p>Your mystery word will appear here.</p>
+				</div>
 			</div>
 			<div class="push"></div>
 		</div>
@@ -36,5 +35,6 @@
 			<p id="copyright">&copy;Copyright 2016 Kyle Rinehart</p>
 		</div>
 	</footer>
+	<script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 </html>
