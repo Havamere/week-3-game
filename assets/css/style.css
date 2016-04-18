@@ -105,6 +105,10 @@ h6 {
     max-height: 550px;
 }
 
+#reward-section img {
+    margin: 5px;
+}
+
 #mystery-word {
     float: left;
     clear: both;

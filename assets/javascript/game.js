@@ -1,29 +1,31 @@
  	// Words to play the game with
 var words = ["bard","beholder","cleric","dragon","druid","kobold","mage","monk","orc","paladin","ranger","rogue","skeletons","vampire","warrior"];
 
-var rewardsObj = {
-	"bard" : url("../images/bard.jpg"),
-	"beholder" : url("../images/beholder.jpg"),
-	"cleric" : url("../images/cleric.jpg"),
-	"dragon" : url("../images/dragon.jpg"),
-	"druid" : url("../images/druid.jpg"),
-	"kobold" : url("../images/kobold.jpg"),
-	"mage" : url("../images/mage.jpg"),
-	"monk" : url("../images/monk.jpg"),
-	"orc" : url("../images/orc.jpg"),
-	"paladin" : url("../images/paladin.jpg"),
-	"ranger" : url("../images/ranger.jpg"),
-	"rogue" : url("../images/rogue.jpg"),
-	"skeletons" : url("../images/skeletons.jpg"),
-	"vampire" : url("../images/vampire.jpg"),
-	"warrior" : url("../images/warrior.jpg"),
-}
+var rewardsArr = [
+	{word: "bard" , source: "assets/images/bard.jpg"},
+	{word: "beholder" , source: "assets/images/beholder.jpg"},
+	{word: "cleric" , source: "assets/images/cleric.jpg"},
+	{word: "dragon" , source: "assets/images/dragon.jpg"},
+	{word: "druid" , source: "assets/images/druid.jpg"},
+	{word: "kobold" , source: "assets/images/kobold.jpg"},
+	{word: "mage" , source: "assets/images/mage.jpg"},
+	{word: "monk" , source: "assets/images/monk.jpg"},
+	{word: "orc" , source: "assets/images/orc.jpg"},
+	{word: "paladin" , source: "assets/images/paladin.jpg"},
+	{word: "ranger" , source: "assets/images/ranger.jpg"},
+	{word: "rogue" , source: "assets/images/rogue.jpg"},
+	{word: "skeletons" , source: "assets/images/skeletons.jpg"},
+	{word: "vampire" , source: "assets/images/vampire.jpg"},
+	{word: "warrior" , source: "assets/images/warrior.jpg"}
+];
 
 	// Create code to randomly choose one of the mystery words 
 var wordChoice = words[Math.floor(Math.random()*words.length)];
-console.log(wordChoice);
 
-document.querySelector("#reward-section")innerHTML=rewardsObj[wordChoice];
+console.log(wordChoice);
+console.log(rewardsArr[wordChoice]-"");
+
+document.querySelector("#reward").src=rewardsArr[wordChoice].source;
 
 var mysteryWord = [];
 mysteryWord.length = wordChoice.length;
@@ -55,7 +57,7 @@ document.onkeyup = function(event) {
 	// 	} else {
 	// 		guessedLetters.push(userGuess);
 	// 		for (var b=0; b<wordChoice.length; b++) {
-	// 			if (userGuess == wordChoice[b]) {
+	// 			if (userGuess == wordChoice.atChar(b)) {
 	// 				mysteryWord[b] = userGuess;
 	// 				counter = 0;
 	// 				console.log(mysteryWord);
