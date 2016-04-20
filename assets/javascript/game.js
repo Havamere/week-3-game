@@ -45,7 +45,7 @@ document.onkeyup = function(event) {
 		for (var i = 0; i < wordChoice.length; i++){
 	// Checks if user entry is a match to any letter in  the mystery word and updates html if it is
 		if (wordChoice.indexOf(userGuess) >= i) {
-			mysteryWord[wordChoice.indexOf(i)] = userGuess;
+			mysteryWord[wordChoice.indexOf(userGuess)] = userGuess;
 			document.querySelector("#mystery-word").innerHTML = mysteryWord;
 	// Accounts for winning condition
 			if (mysteryWord.join("") == wordChoice) {
