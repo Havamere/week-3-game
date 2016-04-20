@@ -26,8 +26,6 @@ console.log(wordChoice);
 var mysteryWord = [];
 mysteryWord.length = wordChoice.length;
 
-//document.querySelector("#reward").src=rewardsArr[compChoice].source;
-
 window.onload = function () {
 	document.querySelector("#mystery-word").innerHTML=mysteryWord;
 }
@@ -38,25 +36,22 @@ document.onkeyup = function(event) {
 	// Determines which exact key was selected. Makes it lowercase
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 	console.log(userGuess);
-	// Accounts for loss condition
-	if (wrongGuesses == 8) {
-		document.querySelector("#mystery-word").innerHTML = "You have lost.";
-	// Accounts for winning condition
 	// Checks if user entry is a match to any letter in  the mystery word and updates html if it is
-	} else if (wordChoice.indexOf(userGuess) >= 0) {
+	if (wordChoice.indexOf(userGuess) >= 0) {
 		mysteryWord[wordChoice.indexOf(userGuess)] = userGuess;
 		document.querySelector("#mystery-word").innerHTML = mysteryWord;
+	// Accounts for winning condition
 		if (mysteryWord.join("") == wordChoice) {
 	 		document.querySelector("#reward").src=rewardsArr[compChoice].source;
 	 		document.querySelector("#mystery-word").innerHTML = "You have won!";
 	 	}
-		//console.log(wordChoice.indexOf(userGuess));
 	// Covers letters that don't match any letters in the mystery word
 	} else {
 		wrongGuesses++;
 		console.log(wrongGuesses);
+	// Accounts for loss condition
+		if (wrongGuesses == 8) {
+		document.querySelector("#mystery-word").innerHTML = "You have lost.";
+		}
 	}
 }
-	// } else if (mysteryWord.join("") == wordChoice) {
-	// 	document.querySelector("#reward").src=rewardsArr[compChoice].source;
-	// 	document.querySelector("#mystery-word").innerHTML = "You have won!";
