@@ -20,13 +20,13 @@ var rewardsArr = [
 	// Create code to randomly choose one of the mystery words 
 var compChoice = [Math.floor(Math.random()*rewardsArr.length)];
 var wordChoice = rewardsArr[compChoice].word;
-//console.log(wordChoice);
+console.log(wordChoice);
 
 	//Shows user correct guesses.
 var mysteryWord = [];
 mysteryWord.length = wordChoice.length;
 
-document.querySelector("#reward").src=rewardsArr[compChoice].source;
+//document.querySelector("#reward").src=rewardsArr[compChoice].source;
 
 window.onload = function () {
 	document.querySelector("#mystery-word").innerHTML=mysteryWord;
@@ -42,13 +42,14 @@ document.onkeyup = function(event) {
 	if (wrongGuesses == 8) {
 		document.querySelector("#mystery-word").innerHTML = "You have lost.";
 	// Accounts for winning condition
-	} else if (mysteryWord.join("") == wordChoice) {
-		document.querySelector("#reward").src=rewardsArr[compChoice].source;
-		document.querySelector("#mystery-word").innerHTML = "You have won!";
 	// Checks if user entry is a match to any letter in  the mystery word and updates html if it is
 	} else if (wordChoice.indexOf(userGuess) >= 0) {
 		mysteryWord[wordChoice.indexOf(userGuess)] = userGuess;
 		document.querySelector("#mystery-word").innerHTML = mysteryWord;
+		if (mysteryWord.join("") == wordChoice) {
+	 		document.querySelector("#reward").src=rewardsArr[compChoice].source;
+	 		document.querySelector("#mystery-word").innerHTML = "You have won!";
+	 	}
 		//console.log(wordChoice.indexOf(userGuess));
 	// Covers letters that don't match any letters in the mystery word
 	} else {
@@ -56,3 +57,6 @@ document.onkeyup = function(event) {
 		console.log(wrongGuesses);
 	}
 }
+	// } else if (mysteryWord.join("") == wordChoice) {
+	// 	document.querySelector("#reward").src=rewardsArr[compChoice].source;
+	// 	document.querySelector("#mystery-word").innerHTML = "You have won!";
