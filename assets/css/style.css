@@ -107,6 +107,10 @@ h6 {
 
 #reward-section img {
     margin: 5px;
+    max-height: 400px;
+    min-height: 200px;
+    max-width: 500px;
+    min-width: 200px;
 }
 
 #mystery-word {

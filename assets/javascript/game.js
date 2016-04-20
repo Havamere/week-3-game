@@ -1,6 +1,24 @@
- 	// Words to play the game with
-var words = ["bard","beholder","cleric","dragon","druid","kobold","mage","monk","orc","paladin","ranger","rogue","skeletons","vampire","warrior"];
+// var words = ["bard","beholder","cleric","dragon","druid","kobold","mage","monk","orc","paladin","ranger","rogue","skeletons","vampire","warrior"];
 
+// var rewardsObj = {
+//  	bard : "assets/images/bard.jpg",
+//  	beholder : "assets/images/beholder.jpg",
+//  	cleric : "assets/images/cleric.jpg",
+//  	dragon : "assets/images/dragon.jpg",
+//  	druid : "assets/images/druid.jpg",
+//  	kobold : "assets/images/kobold.jpg",
+//  	mage : "assets/images/mage.jpg",
+//  	monk : "assets/images/monk.jpg",
+//  	orc : "assets/images/orc.jpg",
+//  	paladin : "assets/images/paladin.jpg",
+//  	ranger : "assets/images/ranger.jpg",
+//  	rogue : "assets/images/rogue.jpg",
+//  	skeletons : "assets/images/skeletons.jpg",
+//  	vampire : "assets/images/vampire.jpg",
+//  	warrior : "assets/images/warrior.jpg",
+//  }
+
+ 	// Words and img source to play the game with
 var rewardsArr = [
 	{word: "bard" , source: "assets/images/bard.jpg"},
 	{word: "beholder" , source: "assets/images/beholder.jpg"},
@@ -20,53 +38,57 @@ var rewardsArr = [
 ];
 
 	// Create code to randomly choose one of the mystery words 
-var wordChoice = words[Math.floor(Math.random()*words.length)];
+//var wordChoice = words[Math.floor(Math.random()*words.length)];
+ var compChoice = [Math.floor(Math.random()*rewardsArr.length)];
+ var wordChoice = rewardsArr[compChoice].word;
 
-console.log(wordChoice);
-console.log(rewardsArr[wordChoice]-"");
-
-document.querySelector("#reward").src=rewardsArr[wordChoice].source;
+console.log(wordChoice)
 
 var mysteryWord = [];
 mysteryWord.length = wordChoice.length;
 
-var display = "";
+document.querySelector("#reward").src=rewardsArr[compChoice].source;
 
 window.onload = function () {
-	document.querySelector("#mystery-word").innerHTML=wordChoice;
+	document.querySelector("#mystery-word").innerHTML=mysteryWord;
 }
-var guessedLetters = [1];
+// counters for game updates
 var counter = 0;
 var wrongGuesses = 0;
 
 document.onkeyup = function(event) {
-	// Determines which exact key was selected. Make it lowercase
+	// Determines which exact key was selected. Makes it lowercase
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 	console.log(userGuess);
-
-	console.log(guessedLetters);
-	wrongGuesses = wrongGuesses + counter;
-	for (var d=0; d<mysteryWord.length; d++){
-		display = display + mysteryWord[d];
+	if (wrongGuesses == 8) {
+		document.querySelector("#mystery-word").innerHTML = "You have lost.";
+	} else if (mysteryWord.join("") == wordChoice) {
+		document.querySelector("#reward").src=rewardsArr[compChoice].source;
+		document.querySelector("#mystery-word").innerHTML = "You have won!";
+	} else if (wordChoice.indexOf(userGuess) >= 0) {	// attempt use of indexOf and/or charAt
+		mysteryWord[wordChoice.indexOf(userGuess)] = userGuess;
+		document.querySelector("#mystery-word").innerHTML = mysteryWord;
+		console.log(wordChoice.indexOf(userGuess));
+	} else {
+		wrongGuesses++;
+		console.log(wrongGuesses);
+		}
 	}
-	document.querySelector("#mystery-word").innerHTML=display;
 }
-	// for (var a=0; a<guessedLetters.length; a++) {
-	// 	if (userGuess == guessedLetters[a]) {
-	// 		guessedLetters.pop();
-	// 	} else {
-	// 		guessedLetters.push(userGuess);
-	// 		for (var b=0; b<wordChoice.length; b++) {
-	// 			if (userGuess == wordChoice.atChar(b)) {
-	// 				mysteryWord[b] = userGuess;
-	// 				counter = 0;
-	// 				console.log(mysteryWord);
-	// 			} else {
-	// 				counter = 1;
-	// 				if (wrongGuesses == 8) {
-	// 					mysteryWord = "You have lost."
-	// 				}
-	// 			}
-	// 		}
-	// 	}	
-	// }
+// 	console.log(guessedLetters);
+// 	wrongGuesses = wrongGuesses + counter;
+// 	for (var d=0; d<mysteryWord.length; d++){
+// 		display = display + mysteryWord[d];
+// 	}
+// 	document.querySelector("#mystery-word").innerHTML=display;
+// }
+// 		for (var b=0; b<wordChoice.length; b++) {
+// 			if (userGuess == wordChoice.atChar(b)) {
+// 				mysteryWord[b] = userGuess;
+// 				counter = 0;
+// 				console.log(mysteryWord);
+// 			} 
+// 		}
+// 	}	
+// }
+//}
